@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>School ERP</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="login-screen">
+    <div class="login-box">
+      <h2>School ERP Login</h2>
+      <input type="password" id="password-input" placeholder="Enter Password">
+      <button onclick="checkPassword()">Login</button>
+      <p id="login-error"></p>
+    </div>
+  </div>
+
+  <nav>
+    <button onclick="showPage('dashboard')">Dashboard</button>
+    <button onclick="showPage('classes')">Manage Classes</button>
+    <button onclick="showPage('students')">Manage Students</button>
+    <button onclick="showPage('attendance')">Attendance</button>
+  </nav>
+
+  <!-- Dashboard -->
+  <section id="dashboard" class="page">
+    <h2>Dashboard</h2>
+    <label>Class:</label>
+    <select id="dashClassFilter" onchange="loadDashboardStudents()"></select>
+
+    <label>Student:</label>
+    <select id="dashStudentFilter" onchange="showStudentAttendance()"></select>
+
+    <label>Date:</label>
+    <input type="date" id="dashDateFilter" onchange="showStudentAttendance()">
+
+    <div id="dashboardData"></div>
+  </section>
+
+  <!-- Manage Classes -->
+  <section id="classes" class="page hidden">
+    <h2>Manage Classes</h2>
+    <input type="text" id="classInput" placeholder="Class Name">
+    <input type="text" id="sectionInput" placeholder="Section (A/B)">
+    <button onclick="addClass()">Add Class</button>
+    <ul id="classList"></ul>
+  </section>
+
+  <!-- Manage Students -->
+  <section id="students" class="page hidden">
+    <h2>Manage Students</h2>
+    <input type="text" id="studentNameInput" placeholder="Student Name">
+    <select id="studentClassSelect"></select>
+    <button onclick="addStudent()">Add Student</button>
+    <ul id="studentList"></ul>
+  </section>
+
+  <!-- Attendance -->
+  <section id="attendance" class="page hidden">
+    <h2>Attendance</h2>
+    <label>Date:</label>
+    <input type="date" id="attendanceDate">
+    <select id="attendanceClassSelect" onchange="loadAttendanceStudents()"></select>
+    <div id="attendanceList"></div>
+    <button id="submitBtn" onclick="submitAttendance()">Submit Attendance</button>
+    <button onclick="exportCSV()">Export CSV</button>
+  </section>
+
+  <script src="script.js"></script>
+<!-- Footer -->
+<div id="footer">
+  Made by Harsh
+</div>
+</body>
+</html>
+
